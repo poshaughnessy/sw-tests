@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Worker tests</title>
+  </head>
+  <body>
+    <h1>Service Worker tests</h1>
+    <script>
+      if (!('serviceWorker' in navigator)) {
+        console.log('Service worker not supported');
+      } else {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          // Successful registration
+          console.log('Registration successful, scope is:', registration.scope);
+        })
+        .catch(function(error) {
+          // Failed registration, service worker won't be installed
+          console.log('Service worker registration failed, error:', error);
+        });
+      }
+    </script>
+  </body>
+</html>
